@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sust</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="m1css.css">
+    <style>
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <div class="logo"></div>
+        <div class="topbar pad0">
+            <ul>
+                <li><a href="mockuphtml.html" class="logo">Sust</a></li>
+                <li><a href="mockuphtml.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class=" padtb40">
+        <div>
+            <div class="inquiryForm">
+                <div class="heading">Contact Us</div>
+                <form method="post" class="form" onsubmit="return contactSend()">
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Your Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="EX:- Atharva Singh" required>
+                        <span id="errorName" class="error"></span>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Your Mobile</label>
+                        <input type="text" id="mobile" class="form-control" placeholder="EX:- 1234567890" required>
+                        <span id="errorMobile" class="error"></span>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Your Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="EX:- asdf@as.as" required>
+                        <span id="errorEmail" class="error"></span>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="float: left;">Your Full Address</label>
+                        <textarea class="form-control" id="address" placeholder="Full address" style="float: right;margin-right: 100px;" required></textarea>
+                        <span id="errorAddress" class="error"></span>
+                    </div>
+                    <div class="form-group" style="margin-top: 150px;">
+                        <label style="float: left;">Your Message</label>
+                        <textarea class="form-control" id="message" placeholder="your query" style="float: right;margin-right: 110px;" required></textarea>
+                        <span id="errorMessage" class="error"></span>
+                    </div>
+                    <div class="form-group but" style="margin-bottom: 20px;">
+                        <button type="submit" style="background-color: rgb(39, 39, 182);border-radius: 10px;cursor: grab; color: white;font-size: 13px; width: 80px; border: 0px;">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function contactSend() {
+            var name = document.getElementById('name').value;
+            var mobile = document.getElementById('mobile').value;
+            var email = document.getElementById('email').value;
+            var address = document.getElementById('address').value;
+            var message = document.getElementById('message').value;
+
+            var mobileRegex = /^[0-9]{10}$/;
+
+            if (name == "") {
+                document.getElementById('errorName').innerHTML = "*This field is required";
+                return false;
+            } else {
+                document.getElementById('errorName').innerHTML = "";
+            }
+
+            if (mobile == "") {
+                document.getElementById('errorMobile').innerHTML = "*This field is required";
+                return false;
+            } else if (!mobile.match(mobileRegex)) {
+                document.getElementById('errorMobile').innerHTML = "Enter a valid 10-digit mobile number";
+                return false;
+            } else {
+                document.getElementById('errorMobile').innerHTML = "";
+            }
+
+            if (email == "") {
+                document.getElementById('errorEmail').innerHTML = "*This field is required";
+                return false;
+            } else {
+                document.getElementById('errorEmail').innerHTML = "";
+            }
+
+            if (address == "") {
+                document.getElementById('errorAddress').innerHTML = "*This field is required";
+                return false;
+            } else {
+                document.getElementById('errorAddress').innerHTML = "";
+            }
+
+            if (message == "") {
+                document.getElementById('errorMessage').innerHTML = "*This field is required";
+                return false;
+            } else {
+                document.getElementById('errorMessage').innerHTML = "";
+            }
+
+            alert("\n Name : " + name + "\n Mobile : " + mobile + "\n Email : " + email + "\n Address : " + address + "\n Message : " + message);
+            window.location.href = 'thank.html';
+            return false;
+        }
+    </script>
+</body>
+
+</html>
